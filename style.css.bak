@@ -1,0 +1,122 @@
+@import url("/home/lemon2/.cache/wal/colors-waybar.css");
+
+/* General settings */
+* {
+    font-family: 'SF Pro Text', 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+/* Bar container */
+window#waybar {
+    background: transparent;
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* Workspaces */
+#workspaces {
+    margin: 0 6px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: @foreground;
+    border: none;
+    padding: 0 6px;
+    margin: 0 2px;
+    border-radius: 6px;
+    transition: 0.2s ease-in-out;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#workspaces button.focused {
+    background: #ffffff;
+    color: #000000;
+    border-radius: 6px;
+}
+
+#workspaces button.active {
+    background: #888888;
+    color: #ffffff;
+}
+
+#workspaces button.urgent {
+    background: #eb4d4b;
+    color: #ffffff;
+}
+
+/* Modules (clock, cpu, etc.) */
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#tray,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    padding: 0 12px;
+    margin: 0 4px;
+    background: rgba(0, 0, 0, 0.3);
+    color: @foreground;
+    border-radius: 6px;
+}
+
+/* Battery states */
+#battery.charging,
+#battery.plugged {
+    background-color: #26A65B;
+    color: #ffffff;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation: blink 0.5s steps(12) infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Audio */
+#pulseaudio.muted,
+#wireplumber.muted {
+    background-color: #90b1b1;
+    color: #2a5c45;
+}
+
+/* Idle inhibitor */
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+/* Tray */
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
